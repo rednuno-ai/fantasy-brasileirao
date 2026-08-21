@@ -1,0 +1,13 @@
+{
+  "name": "fantasy-brasileirao-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import:transfermarkt": "node import-transfermarkt.mjs",
+    "import:cbf": "node import-cbf-stats.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "playwright": "^1.47.0"
+  }
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Criar time grátis — Fantasy Brasileirão</title>
+<meta name="description" content="Cria a tua conta grátis no Fantasy Brasileirão e começa a montar o teu time da Série A.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/registo.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<div class="fb-auth-shell">
+  <div class="fb-form-card">
+    <h1 style="font-size:1.5rem;">Criar time grátis</h1>
+    <p class="fb-text-muted" style="margin-bottom:22px;">Sem prêmios, sem custos — só a resenha do Brasileirão.</p>
+
+    <div class="fb-alert fb-alert--error" data-fb-alert-error></div>
+    <div class="fb-alert fb-alert--success" data-fb-alert-success></div>
+
+    <form data-fb-register-form>
+      <div class="fb-field">
+        <label for="team_name">Nome do time</label>
+        <input type="text" id="team_name" name="team_name" required maxlength="40" placeholder="Ex: Resenha FC">
+      </div>
+      <div class="fb-field">
+        <label for="username">Nome de utilizador</label>
+        <input type="text" id="username" name="username" required maxlength="24" pattern="[a-zA-Z0-9_]+" placeholder="Ex: joao_10">
+        <small>Só letras, números e underscore.</small>
+      </div>
+      <div class="fb-field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="fb-field">
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password">
+        <small>Mínimo 6 caracteres.</small>
+      </div>
+      <button type="submit" class="fb-btn fb-btn--primary fb-btn--full" data-fb-submit>Criar time</button>
+    </form>
+
+    <p class="fb-text-muted" style="margin-top:18px; text-align:center; font-size:0.9rem;">
+      Já tens conta? <a href="/fantasy-brasileirao/login.html">Entrar</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script>
+document.querySelector('[data-fb-register-form]').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.querySelector('[data-fb-submit]');
+  const errBox = document.querySelector('[data-fb-alert-error]');
+  const okBox = document.querySelector('[data-fb-alert-success]');
+  errBox.classList.remove('is-visible');
+  okBox.classList.remove('is-visible');
+  btn.disabled = true;
+  btn.textContent = 'A criar...';
+
+  const team_name = document.getElementById('team_name').value.trim();
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await fbSupabase.auth.signUp({
+    email,
+    password,
+    options: { data: { username, team_name } },
+  });
+
+  if (error) {
+    errBox.textContent = 'Não foi possível criar a conta: ' + error.message;
+    errBox.classList.add('is-visible');
+    btn.disabled = false;
+    btn.textContent = 'Criar time';
+    return;
+  }
+
+  if (data.session) {
+    window.location.href = '/fantasy-brasileirao/montar-time.html';
+  } else {
+    okBox.textContent = 'Conta criada! Verifica o teu e-mail para confirmar antes de entrar.';
+    okBox.classList.add('is-visible');
+    btn.textContent = 'Conta criada';
+  }
+});
+</script>
+</body>
+</html>

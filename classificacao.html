@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Classificação — Fantasy Brasileirão</title>
+<meta name="description" content="Ranking geral do Fantasy Brasileirão: veja quem lidera a temporada.">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/classificacao.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<style>
+  .fb-rank-badge { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.8rem; background: var(--fb-bg-sunken); }
+  .fb-rank-1 { background: linear-gradient(145deg,#ffe066,#f5b301); color:#4a3200; }
+  .fb-rank-2 { background: linear-gradient(145deg,#e4e9ee,#b9c3cc); color:#2a3138; }
+  .fb-rank-3 { background: linear-gradient(145deg,#e8c39e,#c78a4d); color:#3a2205; }
+</style>
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/fantasy-brasileirao/montar-time.html">Montar Time</a>
+      <a href="/fantasy-brasileirao/classificacao.html" class="is-active" aria-current="page">Classificação</a>
+      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<main class="fb-section" style="padding-top:32px;">
+  <div class="fb-container">
+    <h1 style="margin-bottom:4px;">Classificação geral</h1>
+    <p class="fb-text-muted" style="margin-bottom:24px;">Ranking de todos os treinadores da temporada ativa.</p>
+
+    <div class="fb-table-wrap">
+      <table class="fb-table">
+        <thead><tr><th>#</th><th>Time</th><th>Treinador</th><th>Pontos</th><th>Rodadas</th></tr></thead>
+        <tbody data-fb-leaderboard-tbody>
+          <tr><td colspan="5"><div class="fb-skeleton" style="height:20px;"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer class="fb-footer">
+  <div class="fb-container fb-footer__grid">
+    <div>
+      <div class="fb-logo" style="margin-bottom:10px;"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</div>
+      <p class="fb-text-muted" style="max-width:36ch;">Fantasy game gratuito e independente do Campeonato Brasileiro Série A.</p>
+    </div>
+    <nav class="fb-footer__links" aria-label="Links do rodapé">
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script>
+(async function loadLeaderboard() {
+  const tbody = document.querySelector('[data-fb-leaderboard-tbody]');
+  try {
+    const { data: season } = await fbSupabase.from('seasons').select('id').eq('is_active', true).limit(1).maybeSingle();
+    if (!season) throw new Error('sem temporada ativa');
+    const { data, error } = await fbSupabase
+      .from('leaderboard')
+      .select('*')
+      .eq('season_id', season.id)
+      .order('total_points', { ascending: false });
+    if (error || !data) throw error;
+    if (!data.length) {
+      tbody.innerHTML = '<tr><td colspan="5" class="fb-empty">Ainda não há times criados nesta temporada.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map((row, i) => {
+      const rank = i + 1;
+      const badgeClass = rank <= 3 ? `fb-rank-${rank}` : '';
+      return `
+        <tr>
+          <td><span class="fb-rank-badge ${badgeClass}">${rank}</span></td>
+          <td><strong>${row.team_name}</strong></td>
+          <td class="fb-text-muted">@${row.username}</td>
+          <td><strong>${Number(row.total_points).toFixed(1)}</strong></td>
+          <td class="fb-text-muted">${row.gameweeks_scored}</td>
+        </tr>`;
+    }).join('');
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="5" class="fb-text-muted">Não foi possível carregar a classificação. Confirma o Supabase em <code>js/config.js</code>.</td></tr>';
+  }
+})();
+</script>
+</body>
+</html>

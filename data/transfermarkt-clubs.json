@@ -1,0 +1,25 @@
+{
+  "_readme": "Mapeamento slug do clube (igual ao clubs.slug no schema) -> ID numérico do clube no Transfermarkt. Todos os 20 confirmados via transfermarkt.com.br (país=Brasil, liga=Campeonato Brasileiro Série A/B), incluindo desambiguação de clubes homónimos noutros países (ex: Internacional != Inter Milão, Vitória != Vitória SC de Guimarães). Se algum vier a mudar de ID no futuro, o padrão é: abre o clube em transfermarkt.com.br, o ID é o número no fim do URL do elenco (ex: .../flamengo/startseite/verein/614 -> 614).",
+  "clubs": {
+    "athletico-pr": 679,
+    "atletico-mg": 330,
+    "bahia": 10010,
+    "botafogo": 537,
+    "chapecoense": 17776,
+    "corinthians": 199,
+    "coritiba": 776,
+    "cruzeiro": 609,
+    "flamengo": 614,
+    "fluminense": 2462,
+    "gremio": 210,
+    "internacional": 6600,
+    "mirassol": 3876,
+    "palmeiras": 1023,
+    "bragantino": 8793,
+    "remo": 10997,
+    "santos": 221,
+    "sao-paulo": 585,
+    "vasco": 978,
+    "vitoria": 2125
+  }
+}

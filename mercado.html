@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Mercado de jogadores — Fantasy Brasileirão</title>
+<meta name="description" content="Consulta os elencos oficiais dos 20 clubes da Série A com valores de mercado em Reais, atualizados a cada temporada.">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/mercado.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<style>
+  .fb-market-toolbar {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    background: var(--fb-bg-elevated); border: 1px solid var(--fb-border);
+    border-radius: var(--fb-radius-md); padding: 14px; margin-bottom: 20px;
+  }
+  .fb-market-toolbar input, .fb-market-toolbar select {
+    padding: 10px 12px; border-radius: var(--fb-radius-sm); border: 1.5px solid var(--fb-border);
+    background: var(--fb-bg); color: var(--fb-text); font-family: inherit; font-size: 0.9rem;
+  }
+  .fb-market-toolbar input[type="search"] { flex: 1; min-width: 180px; }
+  .fb-player-avatar {
+    width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center;
+    font-size: 0.68rem; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .fb-player-cell { display: flex; align-items: center; gap: 10px; }
+  .fb-club-cell { display:flex; align-items:center; gap:8px; }
+  .fb-club-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .fb-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html" class="is-active" aria-current="page">Mercado</a>
+      <a href="/fantasy-brasileirao/montar-time.html">Montar Time</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<main class="fb-section" style="padding-top:36px;">
+  <div class="fb-container">
+    <h1 style="margin-bottom:4px;">Mercado de jogadores</h1>
+    <p class="fb-text-muted" style="margin-bottom:24px;">Elencos oficiais dos 20 clubes da Série A 2026, com valor de mercado em Reais.</p>
+
+    <div class="fb-market-toolbar">
+      <input type="search" placeholder="Buscar jogador..." data-fb-filter-search>
+      <select data-fb-filter-club><option value="">Todos os clubes</option></select>
+      <select data-fb-filter-position>
+        <option value="">Todas as posições</option>
+        <option value="GOL">Goleiro</option>
+        <option value="ZAG">Zagueiro</option>
+        <option value="LAT">Lateral</option>
+        <option value="MEI">Meia</option>
+        <option value="ATA">Atacante</option>
+      </select>
+      <select data-fb-filter-sort>
+        <option value="value_desc">Maior valor</option>
+        <option value="value_asc">Menor valor</option>
+        <option value="name_asc">Nome A-Z</option>
+      </select>
+    </div>
+
+    <div class="fb-table-wrap">
+      <table class="fb-table">
+        <thead>
+          <tr><th>Jogador</th><th>Clube</th><th>Posição</th><th>Valor de mercado</th><th>Gols · época</th><th>Cartões · época</th><th>Escalado por</th></tr>
+        </thead>
+        <tbody data-fb-players-tbody>
+          <tr><td colspan="7"><div class="fb-skeleton" style="height:20px;"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fb-pagination" data-fb-pagination></div>
+  </div>
+</main>
+
+<footer class="fb-footer">
+  <div class="fb-container fb-footer__grid">
+    <div>
+      <div class="fb-logo" style="margin-bottom:10px;"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</div>
+      <p class="fb-text-muted" style="max-width:36ch;">Fantasy game gratuito e independente do Campeonato Brasileiro Série A.</p>
+    </div>
+    <nav class="fb-footer__links" aria-label="Links do rodapé">
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/fantasy-brasileirao/js/mercado.js"></script>
+</body>
+</html>

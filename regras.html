@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Regras — Fantasy Brasileirão</title>
+<meta name="description" content="Como funciona o Fantasy Brasileirão: orçamento em Reais, formação do elenco, capitão, mercado de transferências e o sistema de pontuação baseado nos dados oficiais da CBF.">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/regras.html">
+<meta property="og:title" content="Regras — Fantasy Brasileirão">
+<meta property="og:description" content="Orçamento, escalação, capitão, transferências e pontuação: entende todas as regras do Fantasy Brasileirão.">
+<meta property="og:type" content="article">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<style>
+  .fb-rules { max-width: 820px; margin: 0 auto; }
+  .fb-rules h2 { margin-top: 2em; font-size: 1.4rem; display:flex; align-items:center; gap:10px; }
+  .fb-rules h2 .fb-num { display:inline-grid; place-items:center; width:30px; height:30px; border-radius:9px; background:var(--fb-bg-sunken); font-size:0.9rem; }
+  .fb-rules ul { padding-left: 1.2em; }
+  .fb-rules li { margin-bottom: 0.5em; }
+  .fb-callout { background: var(--fb-bg-sunken); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md); padding: 18px 20px; margin: 1.4em 0; font-size: 0.94rem; }
+  .fb-callout--source { border-left: 4px solid var(--fb-info); }
+  .fb-toc { display:flex; flex-wrap:wrap; gap:8px; margin: 24px 0 8px; }
+  .fb-toc a { font-size:0.82rem; font-weight:700; padding:7px 12px; border-radius:999px; background:var(--fb-bg-sunken); border:1px solid var(--fb-border); color:var(--fb-text-muted); }
+</style>
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/regras.html" class="is-active" aria-current="page">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/fantasy-brasileirao/montar-time.html">Montar Time</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<main class="fb-section">
+  <div class="fb-container fb-rules">
+    <span class="fb-eyebrow">Guia completo</span>
+    <h1>Regras do Fantasy Brasileirão</h1>
+    <p class="fb-text-muted">O Fantasy Brasileirão é 100% gratuito — não há prêmios, só a disputa direta entre amigos e o resto da galera. Estas são as regras completas de como montar o teu time, escalar cada rodada e pontuar.</p>
+
+    <nav class="fb-toc" aria-label="Sumário">
+      <a href="#orcamento">Orçamento e elenco</a>
+      <a href="#escalacao">Escalação da rodada</a>
+      <a href="#capitao">Capitão</a>
+      <a href="#chips">Chips</a>
+      <a href="#mercado">Mercado de transferências</a>
+      <a href="#pontuacao">Pontuação</a>
+      <a href="#fonte">Fonte dos dados</a>
+      <a href="#ligas">Ligas privadas</a>
+    </nav>
+
+    <h2 id="orcamento"><span class="fb-num">1</span>Orçamento e formação do elenco</h2>
+    <p>Cada treinador recebe um orçamento inicial de <strong>R$ 150 milhões</strong> (valor definido pela liga a cada temporada) para montar um elenco de <strong>23 jogadores</strong> reais dos 20 clubes da Série A, respeitando as vagas por posição:</p>
+    <ul>
+      <li><strong>3</strong> goleiros (GOL)</li>
+      <li><strong>8</strong> defensores (ZAG/LAT — zagueiros e laterais)</li>
+      <li><strong>8</strong> meio-campistas (MEI)</li>
+      <li><strong>4</strong> atacantes (ATA)</li>
+    </ul>
+    <p>O preço de cada jogador é o seu valor de mercado, com referência ao Transfermarkt e convertido para Reais. Podes gastar menos do que o orçamento total — o saldo fica disponível para reforços no mercado de transferências.</p>
+
+    <h2 id="escalacao"><span class="fb-num">2</span>Escalação de cada rodada</h2>
+    <p>Antes do fecho do mercado de cada rodada (o prazo é sempre <strong>2 horas antes do primeiro jogo da rodada</strong>), define a partir do teu elenco de 23 jogadores:</p>
+    <ul>
+      <li><strong>11 titulares</strong> numa formação tática à tua escolha (ex: 4-3-3, 4-4-2, 3-5-2)</li>
+      <li><strong>4 reservas</strong>, que entram automaticamente se um titular não jogar</li>
+      <li>O <strong>capitão</strong> da rodada (ver secção seguinte)</li>
+    </ul>
+    <p>Um jogador que não entra em campo na rodada pontua 0 — por isso os reservas existem para minimizar o risco de escalar alguém fora dos jogos.</p>
+
+    <h2 id="capitao"><span class="fb-num">3</span>Capitão</h2>
+    <p>O capitão é o jogador em quem mais confias na rodada: a pontuação dele — positiva <em>ou</em> negativa — conta em <strong>dobro</strong>. Se não escolheres um novo capitão, mantém-se o mesmo da rodada anterior.</p>
+
+    <h2 id="chips"><span class="fb-num">4</span>Chips</h2>
+    <p>Ideia trazida do Fantasy Premier League: dois chips especiais, cada um utilizável <strong>uma vez por metade da época</strong> (rodadas 1-19 e 20-38). Ativa-os em "Montar Time", antes do prazo da rodada em que queres usá-los:</p>
+    <ul>
+      <li><strong>👑 Capitão Triplo</strong> — o capitão pontua 3x em vez de 2x nessa rodada.</li>
+      <li><strong>🚀 Banco Reforçado</strong> — os pontos dos 4 reservas também contam na pontuação da rodada, além dos titulares.</li>
+    </ul>
+
+    <h2 id="mercado"><span class="fb-num">5</span>Mercado de transferências</h2>
+    <ul>
+      <li><strong>1 troca grátis por rodada</strong> — vende um jogador do elenco e compra outro dentro do orçamento disponível. Não conta nada disto enquanto ainda estás a montar o elenco inicial, antes da tua primeira rodada.</li>
+      <li>A partir da 2ª troca na mesma rodada, cada uma custa <strong>-4 pontos</strong> na pontuação dessa rodada (mesma convenção do Fantasy Premier League).</li>
+      <li>Há uma <strong>janela especial de transferências</strong> a meio da temporada (alinhada com a janela real do Brasileirão) em que qualquer treinador pode fazer até <strong>6 trocas sem custo</strong>. <em>(ainda não automatizada — pede a um admin para aplicar manualmente durante a janela)</em></li>
+      <li>O valor de mercado dos jogadores é revisto a cada temporada — o teu saldo de orçamento acompanha as variações.</li>
+    </ul>
+
+    <h2 id="pontuacao"><span class="fb-num">6</span>Sistema de pontuação</h2>
+    <p>Cada evento em campo vale pontos, positivos ou negativos. Os pesos podem ser ajustados pela administração da liga entre temporadas; a tabela atual:</p>
+
+    <div class="fb-table-wrap">
+      <table class="fb-table" data-fb-scoring-table>
+        <thead><tr><th>Evento</th><th>Pontos</th><th>Posições</th><th>Fonte</th></tr></thead>
+        <tbody>
+          <tr><td colspan="4" class="fb-text-muted">A carregar tabela de pontuação…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="fb-callout">
+      Eventos marcados como <strong>"automático"</strong> entram sozinhos na tua pontuação toda quarta-feira. Os marcados como <strong>"manual"</strong> ficam disponíveis para a administração da liga ajustar partida a partida, para quem quiser mais detalhe além do que a fonte oficial publica.
+    </div>
+
+    <h2 id="fonte"><span class="fb-num">7</span>De onde vêm os dados</h2>
+    <div class="fb-callout fb-callout--source">
+      <p style="margin-bottom:0.6em;"><strong>Estatísticas de partida:</strong> consultadas diretamente na <a href="https://www.cbf.com.br/futebol-brasileiro/tabelas/campeonato-brasileiro/serie-a/2026" target="_blank" rel="noopener">tabela oficial da CBF</a>, toda quarta-feira após o fim da rodada. A CBF publica, por atleta, jogos disputados, gols e cartões acumulados na temporada — comparamos com a semana anterior para saber o que aconteceu em cada rodada.</p>
+      <p style="margin-bottom:0;"><strong>Elencos e valores de mercado:</strong> referência ao Transfermarkt, revistos a cada temporada e convertidos para Reais pela taxa de câmbio oficial do Banco Central na data do import.</p>
+    </div>
+
+    <h2 id="ligas"><span class="fb-num">8</span>Ligas privadas</h2>
+    <p>Cria uma liga privada e convida os teus amigos com um código de convite — a classificação da liga privada é só entre vocês, independente do ranking geral. Não há prêmios: o troféu é o direito de zoar o grupo até a próxima temporada.</p>
+  </div>
+</main>
+
+<footer class="fb-footer">
+  <div class="fb-container fb-footer__grid">
+    <div>
+      <div class="fb-logo" style="margin-bottom:10px;"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</div>
+      <p class="fb-text-muted" style="max-width:36ch;">Fantasy game gratuito e independente do Campeonato Brasileiro Série A. Não tem afiliação com a CBF, clubes ou emissoras.</p>
+    </div>
+    <nav class="fb-footer__links" aria-label="Links do rodapé">
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+      <a href="/fantasy-brasileirao/login.html">Entrar</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script>
+(async function loadScoringTable() {
+  const tbody = document.querySelector('[data-fb-scoring-table] tbody');
+  const posLabels = { GOL: 'Goleiro', ZAG: 'Zagueiro', LAT: 'Lateral', MEI: 'Meia', ATA: 'Atacante' };
+  try {
+    const { data, error } = await fbSupabase
+      .from('scoring_rules')
+      .select('label, points, position_scope, auto_computed')
+      .order('points', { ascending: false });
+    if (error || !data || !data.length) throw error || new Error('sem regras');
+    tbody.innerHTML = data.map(r => `
+      <tr>
+        <td>${r.label}</td>
+        <td style="color:${r.points >= 0 ? 'var(--fb-positive)' : 'var(--fb-negative)'}; font-weight:700;">${r.points > 0 ? '+' : ''}${r.points}</td>
+        <td>${r.position_scope ? r.position_scope.map(p => posLabels[p] || p).join(', ') : 'Todas'}</td>
+        <td>${r.auto_computed ? 'Automático (CBF)' : 'Manual'}</td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="4" class="fb-text-muted">Liga o Supabase (js/config.js) e corre o supabase/schema.sql para ver a tabela ao vivo.</td></tr>';
+  }
+})();
+</script>
+</body>
+</html>

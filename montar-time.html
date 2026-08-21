@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Montar Time — Fantasy Brasileirão</title>
+<meta name="description" content="Monta o teu elenco de 23 jogadores dentro do orçamento e escala os titulares de cada rodada.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/montar-time.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<style>
+  .fb-mt-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
+  .fb-budget-bar { background: var(--fb-bg-elevated); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md); padding: 18px 20px; margin-bottom: 20px; }
+  .fb-budget-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .fb-budget-track { height: 10px; border-radius: 999px; background: var(--fb-bg-sunken); overflow:hidden; margin-top:10px; }
+  .fb-budget-fill { height: 100%; background: linear-gradient(90deg, var(--fb-green-600), var(--fb-info)); }
+  .fb-pos-group { margin-bottom: 20px; }
+  .fb-pos-group h3 { font-size: 0.95rem; display:flex; align-items:center; justify-content:space-between; }
+  .fb-pos-group h3 span.fb-count { font-weight: 500; color: var(--fb-text-soft); font-size: 0.82rem; }
+  .fb-squad-list { display: grid; gap: 8px; }
+  .fb-squad-card {
+    display:flex; align-items:center; gap:10px; background: var(--fb-bg-elevated);
+    border: 1px solid var(--fb-border); border-radius: var(--fb-radius-sm); padding: 10px 12px;
+  }
+  .fb-squad-card__info { flex:1; min-width:0; }
+  .fb-squad-card__name { font-weight:700; font-size:0.9rem; }
+  .fb-squad-card__meta { font-size:0.76rem; color:var(--fb-text-soft); }
+  .fb-squad-card__actions { display:flex; align-items:center; gap:6px; }
+  .fb-icon-btn {
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--fb-border);
+    background: var(--fb-bg); color: var(--fb-text-muted); cursor:pointer; font-size:0.85rem; line-height:1;
+  }
+  .fb-icon-btn.is-active { background: var(--fb-accent); border-color: var(--fb-accent); color:#14200a; }
+  .fb-icon-btn:hover { background: var(--fb-bg-sunken); }
+  .fb-empty-slot { border: 1.5px dashed var(--fb-border); border-radius: var(--fb-radius-sm); padding: 10px 12px; color: var(--fb-text-soft); font-size: 0.84rem; }
+  .fb-picker { position: sticky; top: 82px; }
+  .fb-picker input, .fb-picker select { width:100%; padding:10px 12px; border-radius:var(--fb-radius-sm); border:1.5px solid var(--fb-border); background:var(--fb-bg); color:var(--fb-text); font-family:inherit; margin-bottom:8px; }
+  .fb-picker-list { max-height: 480px; overflow-y:auto; display:grid; gap:8px; }
+
+  @media (max-width: 860px) {
+    .fb-mt-layout { grid-template-columns: 1fr; }
+    .fb-picker { position: static; }
+    .fb-picker-list { max-height: none; }
+  }
+  @media (max-width: 480px) {
+    .fb-squad-card { flex-wrap: wrap; }
+    .fb-squad-card__actions { margin-left: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/regras.html">Regras</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/fantasy-brasileirao/montar-time.html" class="is-active" aria-current="page">Montar Time</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<main class="fb-section" style="padding-top:32px;">
+  <div class="fb-container">
+    <h1 style="margin-bottom:4px;" data-fb-team-title>Montar Time</h1>
+    <p class="fb-text-muted" style="margin-bottom:8px;">Escolhe 23 jogadores dentro do orçamento: 3 goleiros, 8 defensores, 8 meias e 4 atacantes. Marca a estrela ⭐ no capitão da rodada.</p>
+    <p style="margin-bottom:20px; font-weight:700;" data-fb-deadline></p>
+
+    <div class="fb-alert fb-alert--error" data-fb-alert-error></div>
+    <div class="fb-alert fb-alert--success" data-fb-alert-success></div>
+
+    <div class="fb-budget-bar">
+      <div class="fb-budget-row">
+        <div><strong data-fb-budget-spent>R$ 0</strong> <span class="fb-text-muted">gastos de</span> <strong data-fb-budget-total>R$ 0</strong></div>
+        <div class="fb-text-muted" data-fb-squad-count>0 / 23 jogadores</div>
+      </div>
+      <div class="fb-budget-track"><div class="fb-budget-fill" data-fb-budget-fill style="width:0%"></div></div>
+      <p class="fb-text-muted" style="font-size:0.82rem; margin:10px 0 0;" data-fb-transfer-info></p>
+    </div>
+
+    <div class="fb-card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:2px;">Chips</h3>
+      <p class="fb-text-muted" style="font-size:0.86rem; margin-bottom:14px;">Um uso por metade da época (rodadas 1-19 e 20-38) — ideia trazida do Fantasy Premier League.</p>
+      <div data-fb-chips><div class="fb-skeleton" style="height:50px;"></div></div>
+    </div>
+
+    <div class="fb-mt-layout">
+      <section>
+        <div data-fb-squad-groups>
+          <div class="fb-skeleton" style="height:120px; margin-bottom:12px;"></div>
+          <div class="fb-skeleton" style="height:200px;"></div>
+        </div>
+      </section>
+
+      <aside class="fb-picker">
+        <h3 style="margin-bottom:10px;">Adicionar jogador</h3>
+        <input type="search" placeholder="Buscar jogador..." data-fb-picker-search>
+        <select data-fb-picker-position>
+          <option value="">Todas as posições</option>
+          <option value="GOL">Goleiro</option>
+          <option value="ZAG">Zagueiro</option>
+          <option value="LAT">Lateral</option>
+          <option value="MEI">Meia</option>
+          <option value="ATA">Atacante</option>
+        </select>
+        <div class="fb-picker-list" data-fb-picker-list></div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/fantasy-brasileirao/js/montar-time.js"></script>
+</body>
+</html>

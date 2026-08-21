@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA5YzNiIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAyNzc2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI3IiBmaWxsPSIjZmZkZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GQjwvdGV4dD48L3N2Zz4=">
+<title>Admin — Fantasy Brasileirão</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/admin.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<style>
+  .fb-admin-section { background: var(--fb-bg-elevated); border:1px solid var(--fb-border); border-radius: var(--fb-radius-md); padding: 22px; margin-bottom: 24px; }
+  .fb-admin-section h2 { font-size: 1.1rem; margin-bottom: 4px; }
+  .fb-admin-section > p.fb-text-muted { margin-bottom: 16px; font-size: 0.88rem; }
+  .fb-inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin-bottom: 16px; }
+  .fb-inline-form .fb-field { margin-bottom: 0; min-width: 160px; flex: 1; }
+  .fb-points-input { width: 80px; padding: 6px 8px; border-radius: 6px; border: 1.5px solid var(--fb-border); background: var(--fb-bg); color: var(--fb-text); font-family: inherit; }
+  .fb-status-pill { font-size: 0.72rem; font-weight:700; padding: 3px 9px; border-radius: 999px; background: var(--fb-bg-sunken); }
+</style>
+</head>
+<body>
+
+<header class="fb-header">
+  <div class="fb-container fb-nav">
+    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <nav class="fb-nav__links" aria-label="Navegação principal">
+      <a href="/fantasy-brasileirao/index.html">Início</a>
+      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
+    </nav>
+    <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
+  </div>
+</header>
+
+<main class="fb-section" style="padding-top:32px;">
+  <div class="fb-container" style="max-width:920px;">
+    <h1 style="margin-bottom:4px;">Painel de administração</h1>
+    <p class="fb-text-muted" style="margin-bottom:24px;">Gestão de rodadas, pontuação e estatísticas.</p>
+
+    <div data-fb-admin-guard>
+      <p class="fb-text-muted">A verificar permissões…</p>
+    </div>
+
+    <div data-fb-admin-content style="display:none;">
+
+      <section class="fb-admin-section">
+        <h2>Rodadas</h2>
+        <p class="fb-text-muted">Cria a rodada e define o prazo de mercado (2h antes do 1º jogo, por regra).</p>
+        <form class="fb-inline-form" data-fb-gameweek-form>
+          <div class="fb-field"><label>Número</label><input type="number" min="1" required data-fb-field="number"></div>
+          <div class="fb-field"><label>Nome</label><input type="text" required placeholder="Rodada 1" data-fb-field="name"></div>
+          <div class="fb-field"><label>Prazo do mercado</label><input type="datetime-local" required data-fb-field="deadline_at"></div>
+          <button class="fb-btn fb-btn--primary fb-btn--sm" type="submit">Criar rodada</button>
+        </form>
+        <div class="fb-table-wrap">
+          <table class="fb-table">
+            <thead><tr><th>#</th><th>Nome</th><th>Prazo</th><th>Status</th><th></th></tr></thead>
+            <tbody data-fb-gameweeks-tbody><tr><td colspan="5" class="fb-text-muted">A carregar…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fb-admin-section">
+        <h2>Pontuação (regras)</h2>
+        <p class="fb-text-muted">Ajusta os pesos de cada evento. Eventos "automático" são preenchidos pelo import semanal da CBF; os "manual" ficam disponíveis para ajustar partida a partida.</p>
+        <div class="fb-table-wrap">
+          <table class="fb-table">
+            <thead><tr><th>Evento</th><th>Pontos</th><th>Fonte</th><th></th></tr></thead>
+            <tbody data-fb-rules-tbody><tr><td colspan="4" class="fb-text-muted">A carregar…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fb-admin-section">
+        <h2>Estatísticas manuais por partida</h2>
+        <p class="fb-text-muted">Para eventos que a CBF não publica por partida (assistências, pênaltis, defesas, etc). Escolhe a partida e o jogador; a pontuação recalcula sozinha ao guardar.</p>
+        <form class="fb-inline-form" data-fb-stats-lookup-form>
+          <div class="fb-field"><label>Partida</label><select data-fb-field="fixture_id" required></select></div>
+          <div class="fb-field"><label>Jogador</label><select data-fb-field="player_id" required></select></div>
+          <button class="fb-btn fb-btn--ghost fb-btn--sm" type="submit">Carregar/criar linha</button>
+        </form>
+        <div data-fb-stats-editor></div>
+      </section>
+
+      <section class="fb-admin-section">
+        <h2>Import automático (CBF e Transfermarkt)</h2>
+        <p class="fb-text-muted">Estes imports correm fora do navegador (scripts Node), por segurança e porque a CBF só é acessível via automação de página completa. Ver <code>SETUP.md</code> para agendar via GitHub Actions (CBF, toda quarta-feira) ou correr manualmente no início da temporada (Transfermarkt).</p>
+        <div class="fb-flex fb-gap-12" style="flex-wrap:wrap;">
+          <span class="fb-status-pill">scripts/import-cbf-stats.mjs</span>
+          <span class="fb-status-pill">scripts/import-transfermarkt.mjs</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/fantasy-brasileirao/js/config.js"></script>
+<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/fantasy-brasileirao/js/admin.js"></script>
+</body>
+</html>
