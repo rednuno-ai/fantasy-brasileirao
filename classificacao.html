@@ -8,7 +8,7 @@
 <meta name="description" content="Ranking geral do Fantasy Brasileirão: veja quem lidera a temporada.">
 <link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/classificacao.html">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 <style>
   .fb-rank-badge { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.8rem; background: var(--fb-bg-sunken); }
   .fb-rank-1 { background: linear-gradient(145deg,#ffe066,#f5b301); color:#4a3200; }
@@ -20,14 +20,14 @@
 
 <header class="fb-header">
   <div class="fb-container fb-nav">
-    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <a href="/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
     <nav class="fb-nav__links" aria-label="Navegação principal">
-      <a href="/fantasy-brasileirao/index.html">Início</a>
-      <a href="/fantasy-brasileirao/regras.html">Regras</a>
-      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
-      <a href="/fantasy-brasileirao/montar-time.html">Montar Time</a>
-      <a href="/fantasy-brasileirao/classificacao.html" class="is-active" aria-current="page">Classificação</a>
-      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+      <a href="/index.html">Início</a>
+      <a href="/regras.html">Regras</a>
+      <a href="/mercado.html">Mercado</a>
+      <a href="/montar-time.html">Montar Time</a>
+      <a href="/classificacao.html" class="is-active" aria-current="page">Classificação</a>
+      <a href="/ligas.html">Ligas Privadas</a>
     </nav>
     <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
     <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
@@ -57,15 +57,15 @@
       <p class="fb-text-muted" style="max-width:36ch;">Fantasy game gratuito e independente do Campeonato Brasileiro Série A.</p>
     </div>
     <nav class="fb-footer__links" aria-label="Links do rodapé">
-      <a href="/fantasy-brasileirao/regras.html">Regras</a>
-      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/regras.html">Regras</a>
+      <a href="/mercado.html">Mercado</a>
     </nav>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/fantasy-brasileirao/js/config.js"></script>
-<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
 <script>
 (async function loadLeaderboard() {
   const tbody = document.querySelector('[data-fb-leaderboard-tbody]');

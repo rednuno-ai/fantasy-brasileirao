@@ -9,17 +9,17 @@
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.oddlyprofitable.com/fantasy-brasileirao/login.html">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
 <header class="fb-header">
   <div class="fb-container fb-nav">
-    <a href="/fantasy-brasileirao/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
+    <a href="/index.html" class="fb-logo"><span class="fb-logo__badge">FB</span>Fantasy Brasileirão</a>
     <nav class="fb-nav__links" aria-label="Navegação principal">
-      <a href="/fantasy-brasileirao/index.html">Início</a>
-      <a href="/fantasy-brasileirao/regras.html">Regras</a>
-      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
+      <a href="/index.html">Início</a>
+      <a href="/regras.html">Regras</a>
+      <a href="/mercado.html">Mercado</a>
     </nav>
     <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
     <div class="fb-flex fb-gap-8" data-fb-auth-area></div>
@@ -46,14 +46,14 @@
     </form>
 
     <p class="fb-text-muted" style="margin-top:18px; text-align:center; font-size:0.9rem;">
-      Ainda não tens time? <a href="/fantasy-brasileirao/registo.html">Cria grátis</a>
+      Ainda não tens time? <a href="/registo.html">Cria grátis</a>
     </p>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/fantasy-brasileirao/js/config.js"></script>
-<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
 <script>
 document.querySelector('[data-fb-login-form]').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -78,7 +78,7 @@ document.querySelector('[data-fb-login-form]').addEventListener('submit', async 
     return;
   }
 
-  window.location.href = '/fantasy-brasileirao/montar-time.html';
+  window.location.href = '/montar-time.html';
 });
 </script>
 </body>

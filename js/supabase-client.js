@@ -26,7 +26,7 @@ async function fbGetProfile() {
   return data;
 }
 
-async function fbRequireAuth(redirectTo = "/fantasy-brasileirao/login.html") {
+async function fbRequireAuth(redirectTo = "/login.html") {
   const session = await fbGetSession();
   if (!session) {
     window.location.href = redirectTo;
@@ -37,7 +37,7 @@ async function fbRequireAuth(redirectTo = "/fantasy-brasileirao/login.html") {
 
 async function fbSignOut() {
   await fbSupabase.auth.signOut();
-  window.location.href = "/fantasy-brasileirao/index.html";
+  window.location.href = "/index.html";
 }
 
 // Formata um valor numérico em R$ (Real brasileiro), aceitando milhões abreviados na UI
@@ -68,15 +68,15 @@ async function fbInitHeader() {
     const profile = await fbGetProfile();
     authArea.innerHTML = `
       <div class="fb-nav-user">
-        <a href="/fantasy-brasileirao/perfil.html" class="fb-nav-user__name">${profile?.team_name ?? "Meu Time"}</a>
-        ${profile?.role === "admin" ? '<a href="/fantasy-brasileirao/admin.html" class="fb-btn fb-btn--ghost fb-btn--sm">Admin</a>' : ""}
+        <a href="/perfil.html" class="fb-nav-user__name">${profile?.team_name ?? "Meu Time"}</a>
+        ${profile?.role === "admin" ? '<a href="/admin.html" class="fb-btn fb-btn--ghost fb-btn--sm">Admin</a>' : ""}
         <button class="fb-btn fb-btn--ghost fb-btn--sm" data-fb-signout>Sair</button>
       </div>`;
     authArea.querySelector("[data-fb-signout]")?.addEventListener("click", fbSignOut);
   } else {
     authArea.innerHTML = `
-      <a href="/fantasy-brasileirao/login.html" class="fb-btn fb-btn--ghost fb-btn--sm">Entrar</a>
-      <a href="/fantasy-brasileirao/registo.html" class="fb-btn fb-btn--primary fb-btn--sm">Criar time grátis</a>`;
+      <a href="/login.html" class="fb-btn fb-btn--ghost fb-btn--sm">Entrar</a>
+      <a href="/registo.html" class="fb-btn fb-btn--primary fb-btn--sm">Criar time grátis</a>`;
   }
 }
 

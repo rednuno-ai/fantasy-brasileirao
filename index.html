@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/fantasy-brasileirao/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,22 +33,22 @@
 
 <header class="fb-header">
   <div class="fb-container fb-nav">
-    <a href="/fantasy-brasileirao/index.html" class="fb-logo">
+    <a href="/index.html" class="fb-logo">
       <span class="fb-logo__badge">FB</span>
       Fantasy Brasileirão
     </a>
     <nav class="fb-nav__links" aria-label="Navegação principal">
-      <a href="/fantasy-brasileirao/index.html" class="is-active" aria-current="page">Início</a>
-      <a href="/fantasy-brasileirao/regras.html">Regras</a>
-      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
-      <a href="/fantasy-brasileirao/montar-time.html">Montar Time</a>
-      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
-      <a href="/fantasy-brasileirao/ligas.html">Ligas Privadas</a>
+      <a href="/index.html" class="is-active" aria-current="page">Início</a>
+      <a href="/regras.html">Regras</a>
+      <a href="/mercado.html">Mercado</a>
+      <a href="/montar-time.html">Montar Time</a>
+      <a href="/classificacao.html">Classificação</a>
+      <a href="/ligas.html">Ligas Privadas</a>
     </nav>
     <button class="fb-nav__toggle" data-fb-nav-toggle aria-label="Abrir menu" aria-expanded="false">☰</button>
     <div class="fb-flex fb-gap-8" data-fb-auth-area>
-      <a href="/fantasy-brasileirao/login.html" class="fb-btn fb-btn--ghost fb-btn--sm">Entrar</a>
-      <a href="/fantasy-brasileirao/registo.html" class="fb-btn fb-btn--primary fb-btn--sm">Criar time grátis</a>
+      <a href="/login.html" class="fb-btn fb-btn--ghost fb-btn--sm">Entrar</a>
+      <a href="/registo.html" class="fb-btn fb-btn--primary fb-btn--sm">Criar time grátis</a>
     </div>
   </div>
 </header>
@@ -61,8 +61,8 @@
         <h1>Monte o seu <span class="fb-hl">time dos sonhos</span> do Brasileirão</h1>
         <p class="fb-lede">Escale jogadores oficiais dos 20 clubes da Série A, dentro de um orçamento real, e pontue toda rodada com dados oficiais da CBF. Sem prêmios, sem pegadinha — só a resenha entre amigos.</p>
         <div class="fb-hero__actions">
-          <a href="/fantasy-brasileirao/registo.html" class="fb-btn fb-btn--primary">Criar meu time grátis</a>
-          <a href="/fantasy-brasileirao/regras.html" class="fb-btn fb-btn--ghost">Ver regras completas</a>
+          <a href="/registo.html" class="fb-btn fb-btn--primary">Criar meu time grátis</a>
+          <a href="/regras.html" class="fb-btn fb-btn--ghost">Ver regras completas</a>
         </div>
         <div class="fb-hero__stats">
           <div class="fb-hero__stat"><strong>20</strong><span>clubes da Série A</span></div>
@@ -133,7 +133,7 @@
           <h2 style="margin-bottom:4px;">Os mais valiosos do Brasileirão</h2>
           <p class="fb-text-muted">Top jogadores por valor de mercado — dados reais, ao vivo do mercado.</p>
         </div>
-        <a href="/fantasy-brasileirao/mercado.html" class="fb-btn fb-btn--ghost fb-btn--sm">Ver mercado completo →</a>
+        <a href="/mercado.html" class="fb-btn fb-btn--ghost fb-btn--sm">Ver mercado completo →</a>
       </div>
       <div class="fb-top-players" data-fb-top-players>
         <div class="fb-skeleton" style="height:88px;"></div>
@@ -150,7 +150,7 @@
     <div class="fb-container" style="text-align:center;">
       <h2>Sem prêmios. Só o orgulho de vencer a resenha.</h2>
       <p class="fb-text-muted" style="max-width:52ch; margin:0 auto 24px;">O Fantasy Brasileirão é 100% gratuito e feito para a diversão entre amigos — cria a tua liga privada e disputa o título de melhor cartoleiro da galera.</p>
-      <a href="/fantasy-brasileirao/registo.html" class="fb-btn fb-btn--primary">Começar agora, é grátis</a>
+      <a href="/registo.html" class="fb-btn fb-btn--primary">Começar agora, é grátis</a>
     </div>
   </section>
 </main>
@@ -162,10 +162,10 @@
       <p class="fb-text-muted" style="max-width:36ch;">Fantasy game gratuito e independente do Campeonato Brasileiro Série A. Não tem afiliação com a CBF, clubes ou emissoras.</p>
     </div>
     <nav class="fb-footer__links" aria-label="Links do rodapé">
-      <a href="/fantasy-brasileirao/regras.html">Regras</a>
-      <a href="/fantasy-brasileirao/mercado.html">Mercado</a>
-      <a href="/fantasy-brasileirao/classificacao.html">Classificação</a>
-      <a href="/fantasy-brasileirao/login.html">Entrar</a>
+      <a href="/regras.html">Regras</a>
+      <a href="/mercado.html">Mercado</a>
+      <a href="/classificacao.html">Classificação</a>
+      <a href="/login.html">Entrar</a>
     </nav>
   </div>
   <div class="fb-container">
@@ -174,8 +174,8 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/fantasy-brasileirao/js/config.js"></script>
-<script src="/fantasy-brasileirao/js/supabase-client.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/supabase-client.js"></script>
 <script>
 (async function loadClubStrip() {
   const el = document.querySelector('[data-fb-club-strip]');
@@ -204,7 +204,7 @@
     el.innerHTML = data.map((p, i) => {
       const color = p.clubs?.primary_color || '#009c3b';
       return `
-      <a href="/fantasy-brasileirao/mercado.html" class="fb-top-player">
+      <a href="/mercado.html" class="fb-top-player">
         <span class="fb-top-player__rank">#${i + 1}</span>
         ${fbAvatarHTML(p.name, color, p.position, 44)}
         <span class="fb-top-player__info">
