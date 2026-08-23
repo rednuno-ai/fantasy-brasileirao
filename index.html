@@ -127,6 +127,26 @@
   </section>
 
   <section class="fb-section">
+    <div class="fb-container">
+      <div class="fb-section__head fb-flex" style="justify-content:space-between; max-width:none;">
+        <div>
+          <h2 style="margin-bottom:4px;">Os mais valiosos do Brasileirão</h2>
+          <p class="fb-text-muted">Top jogadores por valor de mercado — dados reais, ao vivo do mercado.</p>
+        </div>
+        <a href="/fantasy-brasileirao/mercado.html" class="fb-btn fb-btn--ghost fb-btn--sm">Ver mercado completo →</a>
+      </div>
+      <div class="fb-top-players" data-fb-top-players>
+        <div class="fb-skeleton" style="height:88px;"></div>
+        <div class="fb-skeleton" style="height:88px;"></div>
+        <div class="fb-skeleton" style="height:88px;"></div>
+        <div class="fb-skeleton" style="height:88px;"></div>
+        <div class="fb-skeleton" style="height:88px;"></div>
+        <div class="fb-skeleton" style="height:88px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fb-section">
     <div class="fb-container" style="text-align:center;">
       <h2>Sem prêmios. Só o orgulho de vencer a resenha.</h2>
       <p class="fb-text-muted" style="max-width:52ch; margin:0 auto 24px;">O Fantasy Brasileirão é 100% gratuito e feito para a diversão entre amigos — cria a tua liga privada e disputa o título de melhor cartoleiro da galera.</p>
@@ -167,6 +187,35 @@
     `).join('');
   } catch (e) {
     el.innerHTML = '<p class="fb-text-muted">Não foi possível carregar os clubes agora. Configura o Supabase em <code>js/config.js</code> e corre o <code>supabase/seed_clubs.sql</code>.</p>';
+  }
+})();
+
+(async function loadTopPlayers() {
+  const el = document.querySelector('[data-fb-top-players]');
+  if (!el) return;
+  try {
+    const { data, error } = await fbSupabase
+      .from('players')
+      .select('id, name, position, market_value_brl, clubs(name, short_name, primary_color)')
+      .eq('is_active', true)
+      .order('market_value_brl', { ascending: false })
+      .limit(6);
+    if (error || !data || !data.length) throw error || new Error('sem jogadores');
+    el.innerHTML = data.map((p, i) => {
+      const color = p.clubs?.primary_color || '#009c3b';
+      return `
+      <a href="/fantasy-brasileirao/mercado.html" class="fb-top-player">
+        <span class="fb-top-player__rank">#${i + 1}</span>
+        ${fbAvatarHTML(p.name, color, p.position, 44)}
+        <span class="fb-top-player__info">
+          <span class="fb-top-player__name">${p.name}</span><br>
+          <span class="fb-top-player__meta">${p.clubs?.short_name ?? '—'}</span>
+        </span>
+        <span class="fb-top-player__value">${fbFormatBRLCompact(p.market_value_brl)}</span>
+      </a>`;
+    }).join('');
+  } catch (e) {
+    el.innerHTML = '<p class="fb-text-muted">Ainda não há jogadores importados no mercado.</p>';
   }
 })();
 </script>

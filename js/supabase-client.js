@@ -96,4 +96,65 @@ function fbInitMobileNav() {
   }));
 }
 
+// ---------- Avatar genérico (cor do clube + iniciais) ----------
+// Sem fotos de imprensa de jogadores (ver nota em mercado.js) — o avatar usa
+// as cores do clube num gradiente com as iniciais do jogador, e um selo de
+// posição no canto, para dar identidade visual sem usar imagens reais.
+const FB_POSITION_META = {
+  GOL: { label: "Goleiro", short: "GOL", color: "#c47a00" },
+  ZAG: { label: "Zagueiro", short: "ZAG", color: "#1a4fa0" },
+  LAT: { label: "Lateral", short: "LAT", color: "#1a4fa0" },
+  MEI: { label: "Meia", short: "MEI", color: "#147a3a" },
+  ATA: { label: "Atacante", short: "ATA", color: "#b8232e" },
+};
+
+function fbShade(hex, amt) {
+  const c = (hex || "#009c3b").replace("#", "");
+  const num = parseInt(c.length === 3 ? c.split("").map((x) => x + x).join("") : c, 16);
+  let r = (num >> 16) + amt, g = ((num >> 8) & 0xff) + amt, b = (num & 0xff) + amt;
+  r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function fbInitials(name) {
+  return (name || "?").split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+}
+
+function fbAvatarHTML(name, clubColor, position, size) {
+  size = size || 34;
+  const color = clubColor || "#009c3b";
+  const dark = fbShade(color, -40);
+  const pos = FB_POSITION_META[position];
+  const badge = pos
+    ? `<span class="fb-avatar__pos" style="background:${pos.color}" title="${pos.label}">${pos.short[0]}</span>`
+    : "";
+  const fontSize = Math.round(size * 0.36);
+  return `<span class="fb-avatar" style="width:${size}px;height:${size}px;font-size:${fontSize}px;background:linear-gradient(150deg, ${color}, ${dark})">
+    ${fbInitials(name)}${badge}
+  </span>`;
+}
+
+// ---------- Watchlist (favoritos) — guardado localmente no browser ----------
+const FB_WATCHLIST_KEY = "fb_watchlist";
+
+function fbGetWatchlist() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(FB_WATCHLIST_KEY) || "[]"));
+  } catch {
+    return new Set();
+  }
+}
+
+function fbIsWatchlisted(playerId) {
+  return fbGetWatchlist().has(playerId);
+}
+
+function fbToggleWatchlist(playerId) {
+  const set = fbGetWatchlist();
+  if (set.has(playerId)) set.delete(playerId);
+  else set.add(playerId);
+  localStorage.setItem(FB_WATCHLIST_KEY, JSON.stringify([...set]));
+  return set.has(playerId);
+}
+
 document.addEventListener("DOMContentLoaded", () => { fbInitHeader(); fbInitMobileNav(); });

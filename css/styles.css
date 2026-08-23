@@ -516,6 +516,127 @@ table.fb-table tbody tr:last-child td { border-bottom: none; }
 
 .fb-empty { text-align: center; padding: 48px 20px; color: var(--fb-text-soft); }
 
+/* ---------- Avatar genérico ---------- */
+.fb-avatar {
+  position: relative;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18), var(--fb-shadow-sm);
+}
+.fb-avatar__pos {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 900;
+  color: #fff;
+  border: 2px solid var(--fb-bg-elevated);
+}
+
+/* ---------- Watchlist star ---------- */
+.fb-star-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--fb-border);
+  padding: 4px;
+  border-radius: 8px;
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+.fb-star-btn:hover { transform: scale(1.15); }
+.fb-star-btn.is-active { color: var(--fb-accent); text-shadow: 0 0 0 var(--fb-accent); }
+.fb-star-btn.is-active::before { content: "★"; }
+.fb-star-btn:not(.is-active)::before { content: "☆"; }
+
+/* ---------- Modal ---------- */
+.fb-modal-backdrop {
+  position: fixed; inset: 0; background: rgba(10, 20, 14, 0.55);
+  display: none; align-items: center; justify-content: center; padding: 20px;
+  z-index: 80; backdrop-filter: blur(2px);
+}
+.fb-modal-backdrop.is-open { display: flex; }
+.fb-modal {
+  background: var(--fb-bg-elevated); border-radius: var(--fb-radius-lg);
+  box-shadow: var(--fb-shadow-lg); max-width: 460px; width: 100%;
+  max-height: 88vh; overflow-y: auto; padding: 28px; position: relative;
+  animation: fb-modal-in 0.16s ease;
+}
+@keyframes fb-modal-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+.fb-modal__close {
+  position: absolute; top: 16px; right: 16px; background: var(--fb-bg-sunken);
+  border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+  font-size: 1rem; color: var(--fb-text); display: grid; place-items: center;
+}
+.fb-modal__close:hover { background: var(--fb-border); }
+.fb-modal__head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-right: 30px; }
+.fb-modal__head h3 { margin: 0 0 4px; font-size: 1.25rem; }
+.fb-modal__stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+.fb-modal__stat {
+  background: var(--fb-bg-sunken); border-radius: var(--fb-radius-sm); padding: 12px 14px;
+}
+.fb-modal__stat strong { display: block; font-family: var(--fb-font-display); font-size: 1.15rem; }
+.fb-modal__stat span { font-size: 0.74rem; color: var(--fb-text-soft); text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* ---------- Compare bar / table ---------- */
+.fb-compare-bar {
+  position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 140%);
+  background: var(--fb-bg-elevated); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-lg);
+  box-shadow: var(--fb-shadow-lg); padding: 10px 14px; display: flex; align-items: center;
+  flex-wrap: wrap; justify-content: center; gap: 12px; z-index: 70; transition: transform 0.2s ease;
+  max-width: calc(100vw - 24px);
+}
+.fb-compare-bar.is-open { transform: translate(-50%, 0); }
+.fb-compare-bar__chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.fb-compare-chip {
+  display: inline-flex; align-items: center; gap: 6px; background: var(--fb-bg-sunken);
+  border-radius: 999px; padding: 4px 8px 4px 4px; font-size: 0.82rem; font-weight: 600;
+}
+.fb-compare-chip button { background: none; border: none; cursor: pointer; color: var(--fb-text-soft); font-size: 0.8rem; padding: 2px; }
+.fb-compare-table { width: 100%; border-collapse: collapse; }
+.fb-compare-table__row { display: grid; grid-template-columns: 110px repeat(auto-fit, minmax(0, 1fr)); gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--fb-border); font-size: 0.88rem; }
+.fb-compare-table__row > div { text-align: center; }
+.fb-compare-table__row > div:first-child { text-align: left; font-weight: 600; font-size: 0.8rem; }
+.fb-compare-table__row--head { border-bottom: 2px solid var(--fb-border); padding-bottom: 14px; }
+.fb-compare-table__row--head > div:not(:first-child) { display: flex; flex-direction: column; align-items: center; }
+
+/* ---------- Top players (home) ---------- */
+.fb-top-players {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.fb-top-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--fb-bg-elevated);
+  border: 1px solid var(--fb-border);
+  border-radius: var(--fb-radius-md);
+  padding: 14px 16px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.fb-top-player:hover { transform: translateY(-2px); box-shadow: var(--fb-shadow-md); }
+.fb-top-player__rank {
+  font-family: var(--fb-font-display); font-weight: 800; font-size: 0.95rem;
+  color: var(--fb-text-soft); width: 20px; flex-shrink: 0;
+}
+.fb-top-player__info { min-width: 0; flex: 1; }
+.fb-top-player__name { font-weight: 700; font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fb-top-player__meta { font-size: 0.76rem; color: var(--fb-text-soft); }
+.fb-top-player__value { font-family: var(--fb-font-display); font-weight: 800; font-size: 0.92rem; color: var(--fb-brand-strong); white-space: nowrap; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .fb-hero__grid { grid-template-columns: 1fr; }
@@ -547,4 +668,10 @@ table.fb-table tbody tr:last-child td { border-bottom: none; }
   .fb-grid--2, .fb-grid--3, .fb-grid--4 { grid-template-columns: 1fr; }
   .fb-hero { padding: 44px 0 40px; }
   .fb-hero__stats { gap: 18px; }
+  .fb-top-players { grid-template-columns: 1fr; }
+  .fb-market-stats { grid-template-columns: repeat(2, 1fr); }
+  .fb-modal { padding: 20px; max-width: calc(100vw - 24px) !important; }
+  .fb-compare-table { overflow-x: auto; display: block; }
+  .fb-compare-table__row { grid-template-columns: 90px repeat(3, minmax(84px, 1fr)); min-width: 360px; }
+  .fb-compare-bar { bottom: 10px; }
 }

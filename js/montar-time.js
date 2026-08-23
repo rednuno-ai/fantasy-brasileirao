@@ -312,7 +312,7 @@ function fbSquadCardHTML(s) {
   const statusBadge = FB_STATUS_BADGE[s.players.status] || "";
   return `
     <div class="fb-squad-card">
-      <span class="fb-player-avatar" style="background:${color}">${s.players.position}</span>
+      ${fbAvatarHTML(s.players.name, color, s.players.position, 34)}
       <div class="fb-squad-card__info">
         <div class="fb-squad-card__name">${s.players.name} ${statusBadge}</div>
         <div class="fb-squad-card__meta">${club?.short_name ?? "—"} · ${fbFormatBRLCompact(s.purchase_price_brl)}</div>
@@ -356,7 +356,7 @@ function fbRenderPicker() {
     const reason = quotaFull ? "Vaga da posição cheia" : tooExpensive ? "Orçamento insuficiente" : "";
     return `
       <div class="fb-squad-card">
-        <span class="fb-player-avatar" style="background:${color}">${p.position}</span>
+        ${fbAvatarHTML(p.name, color, p.position, 34)}
         <div class="fb-squad-card__info">
           <div class="fb-squad-card__name">${p.name} ${FB_STATUS_BADGE[p.status] || ""}</div>
           <div class="fb-squad-card__meta">${club?.short_name ?? "—"} · ${fbFormatBRLCompact(p.market_value_brl)}</div>
